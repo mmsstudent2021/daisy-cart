@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 import Layout from "../components/Layout";
 
@@ -8,10 +9,16 @@ const AddProduct = () => {
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
 
-  const onSubmitHandler = e => {
+  const apiCreateProduct = async (pddata) => {
+    const { data } = await axios.post("http://localhost:3000/products", pddata);
+    console.log(data);
+  };
+
+  const onSubmitHandler = async (e) => {
     e.preventDefault();
-    console.log(title, price, description, image, category);
-  }
+    const productData = { title, price, description, image, category };
+    await apiCreateProduct(productData);
+  };
 
   return (
     <Layout>
@@ -90,7 +97,9 @@ const AddProduct = () => {
               </div>
 
               <div className="form-control mt-6">
-                <button type="submit" className="btn btn-primary">Login</button>
+                <button type="submit" className="btn btn-primary">
+                  Login
+                </button>
               </div>
             </form>
           </div>
