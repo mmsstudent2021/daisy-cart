@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import Card from "../components/Card";
 import Layout from "../components/Layout";
 
 const Products = () => {
@@ -12,7 +13,13 @@ const Products = () => {
   useEffect(() => {
     fetchProducts();
   }, []);
-  return <Layout>Products</Layout>;
+  return (
+    <Layout>
+      <div className="flex flex-wrap gap-5 justify-center items-center mb-10">
+        {products?.map(product => <Card key={product?.id} product={product} />)}
+      </div>
+    </Layout>
+  );
 };
 
 export default Products;
