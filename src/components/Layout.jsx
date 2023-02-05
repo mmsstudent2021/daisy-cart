@@ -34,9 +34,11 @@ const Layout = ({ children }) => {
               Products
             </button>
           </NavLink>
-          <button className="py-1 my-1 bg-base-300 w-full rounded">
-            Add Product
-          </button>
+          <NavLink to="/add-product">
+            <button className="py-1 my-1 bg-base-300 w-full rounded">
+              Add Product
+            </button>
+          </NavLink>
           <button className="py-1 my-1 bg-base-300 w-full rounded">
             Cart - 10
           </button>
