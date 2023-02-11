@@ -239,6 +239,22 @@
         "rate": 3.6,
         "count": 145
       }
+    },
+    {
+      "title": "iPhone 12",
+      "price": "1000",
+      "description": "iPhone description",
+      "image": "https://i.pinimg.com/474x/6e/11/af/6e11af3517edff2ff1aeca18a5a8b9d5.jpg",
+      "category": "phone",
+      "id": 21
+    },
+    {
+      "title": "iPhone 14",
+      "price": "1000",
+      "description": "iPhone 14 description",
+      "image": "https://i.pinimg.com/474x/63/f7/f0/63f7f001d2bfeb2d79c85592e0188909.jpg",
+      "category": "phone",
+      "id": 22
     }
   ]
 }

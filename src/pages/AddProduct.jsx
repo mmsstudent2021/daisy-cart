@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Layout from "../components/Layout";
 
 const AddProduct = () => {
@@ -8,10 +9,12 @@ const AddProduct = () => {
   const [image, setImage] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
+  const navigate = useNavigate();
 
   const apiCreateProduct = async (pddata) => {
     const { data } = await axios.post("http://localhost:3000/products", pddata);
     console.log(data);
+    navigate("/products")
   };
 
   const onSubmitHandler = async (e) => {
@@ -97,9 +100,14 @@ const AddProduct = () => {
               </div>
 
               <div className="form-control mt-6">
-                <button type="submit" className="btn btn-primary">
-                  Login
-                </button>
+                <div className="flex gap-5">
+                  <Link to="/products">
+                    <button className="btn btn-error text-white">Cancel</button>
+                  </Link>
+                  <button type="submit" className="btn btn-primary">
+                    Create
+                  </button>
+                </div>
               </div>
             </form>
           </div>
