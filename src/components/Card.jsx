@@ -1,6 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const Card = ({product}) => {
+const Card = ({ product, deleteProduct }) => {
   return (
     <div className="card w-96 bg-white shadow-xl">
       <div className="card-body">
@@ -9,7 +10,20 @@ const Card = ({product}) => {
         <p className="truncate">{product?.description}</p>
         <p className="text-xl">${product?.price}</p>
         <div className="card-actions justify-end">
-          <button className="btn btn-primary">Details</button>
+          <button
+            onClick={() => deleteProduct(product.id)}
+            className="btn btn-error btn-sm text-white"
+          >
+            Delete
+          </button>
+          <Link to={`/products/edit/${product.id}`}>
+            <button
+              state={{ product }}
+              className="btn btn-success btn-sm text-white"
+            >
+              Edit
+            </button>
+          </Link>
         </div>
       </div>
     </div>

@@ -5,6 +5,7 @@ import Guard from "./components/Guard";
 import AddProduct from "./pages/AddProduct";
 import Cart from "./pages/Cart";
 import Dashboard from "./pages/Dashboard";
+import Edit from "./pages/Edit";
 import Login from "./pages/Login";
 import Products from "./pages/Products";
 
@@ -41,6 +42,14 @@ const App = () => {
           element={
             <Guard>
               <AddProduct />
+            </Guard>
+          }
+        />
+        <Route
+          path="/products/edit/:id"
+          element={
+            <Guard>
+              <Edit />
             </Guard>
           }
         />
