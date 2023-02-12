@@ -6,6 +6,12 @@ import Layout from "../components/Layout";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
+  const [cart, setCart] = useState([]);
+  console.log(cart)
+
+  const addToCart = (product) => {
+    setCart([...cart, product])
+  }
 
   const deleteProduct = async (id) => {
     Swal.fire({
@@ -16,12 +22,11 @@ const Products = () => {
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
-    }).then(async(result) => {
+    }).then(async (result) => {
       if (result.isConfirmed) {
         Swal.fire(await axios.delete(`http://localhost:3000/products/${id}`));
       }
     });
-    
   };
 
   const fetchProducts = async () => {
@@ -31,7 +36,7 @@ const Products = () => {
   };
   useEffect(() => {
     fetchProducts();
-  }, [products]);
+  }, []);
   return (
     <Layout>
       <div className="flex flex-wrap gap-5 justify-center items-center mb-10">
@@ -40,6 +45,7 @@ const Products = () => {
             key={product?.id}
             product={product}
             deleteProduct={deleteProduct}
+            addToCart={addToCart}
           />
         ))}
       </div>
