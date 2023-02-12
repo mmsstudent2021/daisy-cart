@@ -1,8 +1,14 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { MdDelete, MdEdit, MdShoppingCart } from "react-icons/md";
+import {
+  MdDelete,
+  MdEdit,
+  MdShoppingCart,
+  MdOutlineRemoveCircleOutline,
+} from "react-icons/md";
 
-const Card = ({ product, deleteProduct, addToCart }) => {
+const Card = ({ product, deleteProduct, addToCart, removeFromCart }) => {
+  const cartItems = JSON.parse(localStorage.getItem("cartItems"));
   const navigate = useNavigate();
   const goDetails = (e) => {
     e.stopPropagation();
@@ -20,15 +26,28 @@ const Card = ({ product, deleteProduct, addToCart }) => {
         <p className="truncate">{product?.description}</p>
         <p className="text-xl">${product?.price}</p>
         <div className="card-actions justify-end">
-          <button
-            className="btn btn-sm btn-secondary"
-            onClick={(e) => {
-              e.stopPropagation();
-              addToCart(product);
-            }}
-          >
-            <MdShoppingCart />
-          </button>
+          {cartItems?.find((item) => item.id === product.id) ? (
+            <button
+              className="btn btn-sm btn-accent"
+              onClick={(e) => {
+                e.stopPropagation();
+                removeFromCart(product.id);
+              }}
+            >
+              <MdOutlineRemoveCircleOutline />
+            </button>
+          ) : (
+            <button
+              className="btn btn-sm btn-secondary"
+              onClick={(e) => {
+                e.stopPropagation();
+                addToCart(product);
+              }}
+            >
+              <MdShoppingCart />
+            </button>
+          )}
+
           <button
             onClick={(e) => {
               e.stopPropagation();

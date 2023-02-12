@@ -6,12 +6,22 @@ import Layout from "../components/Layout";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
-  const [cart, setCart] = useState([]);
-  console.log(cart)
+  const cartItems = JSON.parse(localStorage.getItem("cartItems"));
+  const [cart, setCart] = useState(cartItems ? [...cartItems] : []);
+  console.log(cart);
 
   const addToCart = (product) => {
-    setCart([...cart, product])
-  }
+    setCart([...cart, product]);
+    localStorage.setItem("cartItems", JSON.stringify([...cart, product]));
+  };
+
+  const removeFromCart = (id) => {
+    setCart(cart?.filter((item) => item.id !== id));
+    localStorage.setItem(
+      "cartItems",
+      JSON.stringify(cart?.filter((item) => item.id !== id))
+    );
+  };
 
   const deleteProduct = async (id) => {
     Swal.fire({
@@ -46,6 +56,7 @@ const Products = () => {
             product={product}
             deleteProduct={deleteProduct}
             addToCart={addToCart}
+            removeFromCart={removeFromCart}
           />
         ))}
       </div>
