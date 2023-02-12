@@ -6,7 +6,6 @@ import AddProduct from "./pages/AddProduct";
 import Cart from "./pages/Cart";
 import Dashboard from "./pages/Dashboard";
 import Details from "./pages/Details";
-import Detais from "./pages/Details";
 import Edit from "./pages/Edit";
 import Login from "./pages/Login";
 import Products from "./pages/Products";
