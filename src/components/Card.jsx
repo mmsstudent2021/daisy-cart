@@ -41,7 +41,7 @@ const Card = ({ product, deleteProduct, addToCart, removeFromCart }) => {
               className="btn btn-sm btn-secondary"
               onClick={(e) => {
                 e.stopPropagation();
-                addToCart(product);
+                addToCart({...product, qty: 1});
               }}
             >
               <MdShoppingCart />
