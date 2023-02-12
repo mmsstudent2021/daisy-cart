@@ -17,12 +17,7 @@ const Card = ({ product, deleteProduct }) => {
             Delete
           </button>
           <Link to={`/products/edit/${product.id}`}>
-            <button
-              state={{ product }}
-              className="btn btn-success btn-sm text-white"
-            >
-              Edit
-            </button>
+            <button className="btn btn-success btn-sm text-white">Edit</button>
           </Link>
         </div>
       </div>
